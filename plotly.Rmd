@@ -15,7 +15,6 @@ library(plotly)
 
 ```{r}
 data("instacart")
-instacart = 
 ```
 
 scatterplot
