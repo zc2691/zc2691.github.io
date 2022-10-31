@@ -8,7 +8,7 @@ navbar:
     - text: "Dashboard"
       href: dashboard.html
     - icon: fa-envelope fa-lg
-      href: mailto:<you@youremail.com>
+      href: mailto:<zchunyu1224@gmail.com>
     - icon: fa-github fa-lg
       href: http://github.com/zc2691/
 output:
