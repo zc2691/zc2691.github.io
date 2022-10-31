@@ -6,10 +6,6 @@ output:
     toc_float: true
 ---
 
-We are going to make some plotly plots. 
-
-## Load packages and data
-
 ```{r}
 library(tidyverse)
 library(p8105.datasets)
@@ -17,75 +13,43 @@ library(p8105.datasets)
 library(plotly)
 ```
 
-Let's get some data
 ```{r}
-data("nyc_airbnb")
-
-nyc_airbnb = 
-  nyc_airbnb %>% 
-  mutate(rating = review_scores_location / 2) %>% 
-  select(
-    borough = neighbourhood_group, neighbourhood, price, room_type, 
-    lat, long, rating
-    ) %>% 
-  filter(
-    borough == "Manhattan",
-    room_type == "Entire home/apt",
-    price %in% 100:500
-    ) %>% 
-  drop_na(rating)
+data("instacart")
+instacart = 
 ```
 
-Let's make a scatterplot!!
+scatterplot
 
 ```{r}
-nyc_airbnb %>% 
+instacart %>% 
+  count(aisle) %>% 
+  filter(n > 10000) %>%
   mutate(
-    text_label = str_c("Neighbourhood: ", neighbourhood, "\nPrice: ", price)) %>% 
-  plot_ly(
-    x = ~lat, y = ~long, color = ~price,
-    type = "scatter", mode = "markers",
-    alpha = 0.5, text = ~text_label
-  )
+    text_label = str_c("Aisle: ", aisle, "\nCount: ", n)) %>% 
+  mutate(aisle = fct_reorder(aisle, n)) %>% 
+  plot_ly(x = ~aisle, y = ~n, type = "scatter", mode = "markers",
+          text = ~text_label)
 ```
 
-
-Can we make boxplots?? Sure can
+boxplot
 
 ```{r}
-nyc_airbnb %>% 
-  mutate(neighbourhood = fct_reorder(neighbourhood, price)) %>% 
-  plot_ly(y = ~price, color = ~neighbourhood, 
-         type = "box", colors = "viridis")
+instacart %>% 
+  filter (product_name %in% c("Pink Lady Apples","Coffee Ice Cream")) %>%
+  group_by(product_name, order_dow) %>% 
+  summarize(order_hour_of_day_mean = mean(order_hour_of_day)) %>% 
+  plot_ly(y = ~order_hour_of_day_mean, color = ~product_name, type = "box")
 ```
 
-Can we make a barplot??
+barplot
 
 ```{r}
-nyc_airbnb %>% 
-  count(neighbourhood) %>% 
-  mutate(neighbourhood = fct_reorder(neighbourhood, n)) %>%
-  plot_ly(
-    x = ~neighbourhood, y = ~n,
-    type = "bar"
-  ) 
+instacart %>% 
+  filter (aisle %in% c("baking ingredients","dog food care","packaged vegetables fruits")) %>% 
+  group_by(aisle) %>% 
+  count(product_name) %>% 
+  plot_ly(x =~aisle, y = ~n, color = ~aisle, type = "bar", colors = "viridis")
 ```
-
-
-## ggplotly ...
-
-```{r}
-ggp_scatterplot = 
-  nyc_airbnb %>% 
-  ggplot(aes(x = lat, y = long, color = price)) +
-  geom_point()
-
-ggplotly(ggp_scatterplot)
-```
-
-## Create a dashboard...
-
-Not here though. 
 
 
 

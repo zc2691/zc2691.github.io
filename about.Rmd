@@ -6,7 +6,7 @@ output:
     toc_float: true
 ---
 
-# This is Jeff's awesome website
+# This is Zozo's personal website
 
 This website is made in rmarkdown and other stuff.
 

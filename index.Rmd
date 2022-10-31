@@ -1,35 +1,31 @@
 ---
-title: "My awesome website"
+title: "My personal website"
 output: 
   html_document:
     toc: true
     toc_float: true
 ---
 
-# This is Jeff's awesome website
-
-![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
-
-
-Here's some text. I like the internet. I use [google](https://www.google.com/) all the time to do data science. 
-
-This is my dog momo, who likes to be on the internet.
-![](images/momo.png)
+# Hi! I'm Zhaohua Chunyu(Zozo)
 
 <center>
-<img src="images/momo.png" style="width: 25%">
+<img src="images/me.png" style="width: 25%">
 </center>
 
-```{r}
-library(tidyverse)
 
-sample = rnorm(1000)
-mean(sample)
-```
+
+I'm currently a student at Columbia Mailman School of Public Health studying Biostatistics focusing on Data Science in Public Health. 
+
+I was born into a medical family. Deeply influenced by my father, a pronounced colorectal surgeon and oncologist in Shanghai, I have developed a keen interest in health and disease. I pursued a bachelor degree of Biological Sciences at USC and interned at Shanghai Biochip Corporation (SBC) and Merck Pharmaceutical previously. 
+
+
+## Experiences
+
+Here's my [resume](doc/resume.pdf). Please take a look!
+
+I also have [LinkedIn](https://www.linkedin.com/in/zhaohua-chunyu-8748b2224/) and [Github](https://github.com/zc2691) page. Get to know me more!
+
+
 
 
 Here's a direct link to the about page: [about](about.html). 
-
-## New Section!!
-
-[Here's](plotly.html) a page with plotly plots
